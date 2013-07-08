@@ -1,17 +1,16 @@
 
 var express = require('express');
 
-var app = express.createServer(express.logger());
+var fs = require('fs');
 
-var buffer = new Buffer(64);
+var app = express.createServer(express.logger());
 
 var name = fs.readFileSync('index.html');
 
-var len = buffer.write(name);
-var mess = len.toString();
+var len = name.toString();
 
 app.get('/', function(request, response) {
-  response.send(mess);
+  response.send(len);
 });
 
 var port = process.env.PORT || 5000;
