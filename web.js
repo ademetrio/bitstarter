@@ -3,11 +3,7 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-var buffer = new Buffer(64);
-
-var file = fs.readFileSync('index.html');
-
-buffer.write(file); 
+var buffer = new Buffer(fs.readFileSync('index.html'));
 
 buffer.toString();
 
