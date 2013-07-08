@@ -3,16 +3,16 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-var buffer = new Buffer(256);
+var buffer = new Buffer(64);
 
 var file = fs.readFileSync('index.html');
 
-var lit = buffer.write(file); 
+buffer.write(file); 
 
-var string = lit.toString();
+buffer.toString();
 
 app.get('/', function(request, response) {
-  response.send('string');
+  response.send(buffer);
 });
 
 var port = process.env.PORT || 5000;
